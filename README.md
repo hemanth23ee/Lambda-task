@@ -21,9 +21,21 @@ This project is a web application built with Flask and Python that allows users 
 - **HTML/CSS:** Frontend components for user interface and styling.
 - **Jinja2:** Template engine for rendering data dynamically in HTML.
 
+## Usage:
+-Enter a product name in the search field.
+-Optionally, specify a maximum price to filter results.
+-Click the "Search" button to fetch and display product details.
+
 ## Setup Instructions
 
 1. **Clone Repository:**
    ```bash
    git clone <repository-url>
    cd amazon-product-scraper
+2. **Install Dependencies:**
+ ```bash
+   pip install -r requirements.txt
+3.**Run the Application:**
+```bash
+python app.py
+
