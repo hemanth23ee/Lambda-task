@@ -30,14 +30,13 @@ This project is a web application built with Flask and Python that allows users 
 
 1. **Clone Repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/hemanth23ee/Lambda-task
    cd amazon-product-scraper
 2. **Install Dependencies:**
     ```bash
      pip install -r requirements.txt 
 3. **Run the App:**
  ```bash
-   python3 app.py
-
+python3 app.py
 
 
