@@ -33,9 +33,11 @@ This project is a web application built with Flask and Python that allows users 
    git clone <repository-url>
    cd amazon-product-scraper
 2. **Install Dependencies:**
+    ```bash
+     pip install -r requirements.txt 
+3. **Run the App:**
  ```bash
-   pip install -r requirements.txt
-3.**Run the Application:**
-```bash
-python app.py
+   python3 app.py
+
+
 
