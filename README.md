@@ -22,9 +22,9 @@ This project is a web application built with Flask and Python that allows users 
 - **Jinja2:** Template engine for rendering data dynamically in HTML.
 
 ## Usage:
--Enter a product name in the search field.
--Optionally, specify a maximum price to filter results.
--Click the "Search" button to fetch and display product details.
+- Enter a product name in the search field.
+- Optionally, specify a maximum price to filter results.
+- Click the "Search" button to fetch and display product details.
 
 ## Setup Instructions
 
