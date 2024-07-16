@@ -93,8 +93,14 @@ def fetch_amazon_data(product_name, max_price=None):
             if price == 'Not available':
                 continue
 
-            # Convert price to float and filter by max_price if specified
-            if max_price and float(price.replace(',', '')) > max_price:
+            # Convert price to float
+            try:
+                price_float = float(price.replace(',', ''))
+            except ValueError:
+                continue  # Skip if price cannot be converted to float
+
+            # Filter by max_price if specified
+            if max_price and price_float > max_price:
                 continue
 
             # Append product data to list
@@ -122,9 +128,17 @@ def index():
 
     if request.method == 'POST':
         product_name = request.form['product_name']
-        if request.form['max_price']:
-            max_price = float(request.form['max_price'])
+        max_price_str = request.form['max_price']
+
+        if max_price_str:
+            max_price = float(max_price_str)
+
+        # Fetch Amazon data with the provided product_name and max_price
         products = fetch_amazon_data(product_name, max_price=max_price)
+        
+        # If max_price is None (not provided by user), fetch all products
+        if max_price is None:
+            products = fetch_amazon_data(product_name)
 
     return render_template('index.html', products=products, max_price=max_price)
 

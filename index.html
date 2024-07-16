@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Product Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        form label {
+            flex: 0 0 100%;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        form input[type="text"],
+        form input[type="number"],
+        form input[type="submit"] {
+            width: calc(50% - 10px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+        }
+        form input[type="submit"] {
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form input[type="submit"]:hover {
+            background-color: #555;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+        .product h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .product p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .product a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .product a:hover {
+            color: #0056b3;
+        }
+        .no-results {
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Amazon Product Search</h1>
+        <form action="/" method="POST">
+            <label for="product_name">Product Name:</label>
+            <input type="text" id="product_name" name="product_name" required>
+            
+            <label for="max_price">Max Price:</label>
+            <input type="number" id="max_price" name="max_price" step="0.01">
+            
+            <input type="submit" value="Search">
+        </form>
+
+        {% if products %}
+            <div class="results">
+                <h2>Search Results:</h2>
+                {% for product in products %}
+                    <div class="product">
+                        <h3>{{ product['Product Name'] }}</h3>
+                        <p><strong>Price:</strong> {{ product['Price'] }}</p>
+                        <p><strong>Rating:</strong> {{ product['Rating'] }}</p>
+                        <p><a href="{{ product['Link'] }}" target="_blank">View Product</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% elif request.method == 'POST' %}
+            <p class="no-results">No products found. Please adjust your search criteria.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+
